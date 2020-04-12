@@ -5,9 +5,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import PropTypes from 'prop-types';
 
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import SignIn from '~/pages/SignIn';
 import SignUp from '~/pages/SignUp';
 import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,8 +26,38 @@ function Sign() {
 
 function App() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="DashBoard" component={Dashboard} />
+    <Tab.Navigator
+      tabBarOptions={{
+        keyboardHidesTabBar: true,
+        activeTintColor: '#fff',
+        inactiveTintColor: 'rgba(255,255,255,0.6)',
+        style: {
+          backgroundColor: '#8d41a8',
+          borderTopColor: 'transparent',
+        },
+      }}>
+      <Tab.Screen
+        name="DashBoard"
+        component={Dashboard}
+        options={{
+          tabBarLabel: 'Agendamentos',
+          // eslint-disable-next-line react/prop-types
+          tabBarIcon: ({ color }) => (
+            <Icon name="event" size={20} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarLabel: 'Meu perfil',
+          // eslint-disable-next-line react/prop-types
+          tabBarIcon: ({ color }) => (
+            <Icon name="person" size={20} color={color} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 }
