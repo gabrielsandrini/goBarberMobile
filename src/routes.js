@@ -3,7 +3,6 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import PropTypes from 'prop-types';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -62,8 +61,8 @@ function App() {
   );
 }
 
-export default function Routes({ signed }) {
-  return (
+export default function createRouter(signed) {
+  return () => (
     <NavigationContainer>
       <Stack.Navigator headerMode="none">
         {signed ? (
@@ -75,11 +74,3 @@ export default function Routes({ signed }) {
     </NavigationContainer>
   );
 }
-
-Routes.propTypes = {
-  signed: PropTypes.bool,
-};
-
-Routes.defaultProps = {
-  signed: false,
-};

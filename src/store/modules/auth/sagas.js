@@ -43,8 +43,6 @@ export function* signUp({ payload }) {
       email,
       password,
     });
-
-    /*  history.push('/'); */
   } catch (error) {
     Alert.alert(
       'Falha no cadastro',
@@ -62,13 +60,8 @@ export function setToken({ payload }) {
   api.defaults.headers.Authorization = `Bearer ${token}`;
 }
 
-export function signOut() {
-  /*  history.push('/'); */
-}
-
 export default all([
   takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
   takeLatest('@auth/SIGN_UP_REQUEST', signUp),
-  takeLatest('@auth/SIGN_OUT', signOut),
 ]);
