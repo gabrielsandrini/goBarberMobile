@@ -52,7 +52,11 @@ function New() {
           ),
         })}
       />
-      <Stack.Screen name="SelectDateTime" component={SelectDateTime} />
+      <Stack.Screen
+        name="SelectDateTime"
+        component={SelectDateTime}
+        options={{ title: 'Selecione o horário' }}
+      />
       <Stack.Screen name="Confirm" component={Confirm} />
     </Stack.Navigator>
   );
