@@ -19,6 +19,14 @@ import Confirm from '~/pages/New/Confirm';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
+function GoBackIcon({ onPress }) {
+  return (
+    <TouchableOpacity onPress={onPress}>
+      <Icon name="chevron-left" size={20} color="#FFF" />
+    </TouchableOpacity>
+  );
+}
+
 function Sign() {
   return (
     <Stack.Navigator headerMode="none">
@@ -43,19 +51,17 @@ function New() {
         options={({ navigation }) => ({
           title: 'Selecione o prestador',
           headerLeft: () => (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('DashBoard');
-              }}>
-              <Icon name="chevron-left" size={20} color="#FFF" />
-            </TouchableOpacity>
+            <GoBackIcon onPress={() => navigation.navigate('DashBoard')} />
           ),
         })}
       />
       <Stack.Screen
         name="SelectDateTime"
         component={SelectDateTime}
-        options={{ title: 'Selecione o horário' }}
+        options={({ navigation }) => ({
+          title: 'Selecione o horário',
+          headerLeft: () => <GoBackIcon onPress={() => navigation.goBack()} />,
+        })}
       />
       <Stack.Screen name="Confirm" component={Confirm} />
     </Stack.Navigator>
