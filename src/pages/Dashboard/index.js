@@ -8,7 +8,14 @@ import api from '~/services/api';
 import { Container, Title, List } from './styles';
 
 export default function Dashboard() {
-  const [appointments, setAppointments] = useState([]);
+  const [appointments, __setAppointments] = useState([]);
+
+  function setAppointments(appointmentsArray) {
+    const past = appointmentsArray.filter((ap) => Boolean(ap.past));
+    const future = appointmentsArray.filter((ap) => !ap.past);
+    const orderedList = [...future, ...past];
+    __setAppointments(orderedList);
+  }
 
   useEffect(() => {
     async function loadApppointments() {
