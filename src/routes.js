@@ -63,7 +63,14 @@ function New() {
           headerLeft: () => <GoBackIcon onPress={() => navigation.goBack()} />,
         })}
       />
-      <Stack.Screen name="Confirm" component={Confirm} />
+      <Stack.Screen
+        name="Confirm"
+        component={Confirm}
+        options={({ navigation }) => ({
+          title: 'Confirmar agendamento',
+          headerLeft: () => <GoBackIcon onPress={() => navigation.goBack()} />,
+        })}
+      />
     </Stack.Navigator>
   );
 }
