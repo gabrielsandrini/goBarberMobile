@@ -91,6 +91,7 @@ function App() {
         name="DashBoard"
         component={Dashboard}
         options={{
+          unmountOnBlur: true,
           tabBarLabel: 'Agendamentos',
           tabBarIcon: ({ color }) => (
             <Icon name="event" size={20} color={color} />
@@ -101,6 +102,7 @@ function App() {
         name="New"
         component={New}
         options={{
+          unmountOnBlur: true,
           tabBarLabel: 'Agendar',
           tabBarIcon: ({ color }) => (
             <Icon name="add-circle-outline" size={20} color={color} />
