@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import { Alert } from 'react-native';
 import Background from '~/components/Background';
 import Appointment from '~/components/Appointment';
 
@@ -47,7 +48,24 @@ export default function Dashboard() {
           data={appointments}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
-            <Appointment onCancel={() => handleCancel(item.id)} data={item} />
+            <Appointment
+              data={item}
+              onCancel={() =>
+                Alert.alert(
+                  'Cancelando agendamento',
+                  'Você realmente deseja cancelar este agendamento ?',
+                  [
+                    {
+                      text: 'Sim',
+                      style: 'destructive',
+                      onPress: () => handleCancel(item.id),
+                    },
+                    { text: 'Não' },
+                  ],
+                  { cancelable: true }
+                )
+              }
+            />
           )}
         />
       </Container>
