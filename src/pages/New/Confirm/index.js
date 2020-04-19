@@ -56,8 +56,8 @@ Confirm.propTypes = {
           url: PropTypes.string,
         }),
       }),
+      time: PropTypes.string,
     }),
-    time: PropTypes.string,
   }).isRequired,
 
   navigation: PropTypes.shape({
