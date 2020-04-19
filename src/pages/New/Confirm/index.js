@@ -31,7 +31,7 @@ export default function Confirm({ route: { params }, navigation }) {
           source={{
             uri: provider.avatar
               ? provider.avatar.url
-              : `https://api.adorable.io/avatar/50/${provider.name}.png`,
+              : `https://api.adorable.io/avatar/120/${provider.name}.png`,
           }}
         />
 
